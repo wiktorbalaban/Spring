@@ -1,23 +1,20 @@
 package Przyrost3.entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.*;
 
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,
-        property="refId", scope=FightingSchool.class)
+@Table(name = "FIGHTING_SCHOOL", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"id"})})
 public class FightingSchool {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue
+    @Column(name = "id")
     private int id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "percentageToPower")
     private int percentageToPower;
 
     public FightingSchool() {

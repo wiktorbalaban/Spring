@@ -1,25 +1,23 @@
 package Przyrost3.entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,
-        property="refId", scope=Warrior.class)
+@Table(name = "WARRIOR", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"id"})})
 public class Warrior {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @Column(name = "id")
     private int id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "surname")
     private String surname;
 
     @OneToOne(cascade = CascadeType.PERSIST)
@@ -30,7 +28,7 @@ public class Warrior {
     @JoinColumn(name = "WIFE_ID", referencedColumnName = "id")
     Wife wife;
 
-    @Column
+    @Column(name = "power")
     private int power;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
