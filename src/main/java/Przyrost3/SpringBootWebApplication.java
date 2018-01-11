@@ -1,4 +1,4 @@
-package Przyrost3.entities;
+package Przyrost3;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,4 +1,4 @@
-package Przyrost3.entities;
+package Przyrost3;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
