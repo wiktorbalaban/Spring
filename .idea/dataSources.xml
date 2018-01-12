@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="jdbc:postgresql://psql.wmi.amu.edu.pl:5432/dbad_s421824?ssl=true&amp;amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" uuid="230a8de6-6312-48d2-8e83-a1f955851102">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://psql.wmi.amu.edu.pl:5432/dbad_s421824?ssl=true&amp;amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</jdbc-url>
+      <driver-properties>
+        <property name="ApplicationName" value="DataGrip" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>

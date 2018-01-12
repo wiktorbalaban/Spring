@@ -17,8 +17,8 @@ public class Wife {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "percentageToPower")
-    private int percentageToPower;
+    @Column(name = "percentagetopower")
+    private int percentagetopower;
 
     public Wife() {
     }
@@ -43,11 +43,11 @@ public class Wife {
         this.surname = surname;
     }
 
-    public int getPercentageToPower() {
-        return percentageToPower;
+    public int getPercentagetopower() {
+        return percentagetopower;
     }
 
-    public void setPercentageToPower(int percentageToPower) {
-        this.percentageToPower = percentageToPower;
+    public void setPercentagetopower(int percentagetopower) {
+        this.percentagetopower = percentagetopower;
     }
 }

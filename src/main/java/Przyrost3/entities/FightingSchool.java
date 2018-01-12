@@ -14,8 +14,8 @@ public class FightingSchool {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "percentageToPower")
-    private int percentageToPower;
+    @Column(name = "percentagetopower")
+    private int percentagetopower;
 
     public FightingSchool() {
     }
@@ -33,10 +33,10 @@ public class FightingSchool {
     }
 
     public int getPercentageToPower() {
-        return percentageToPower;
+        return percentagetopower;
     }
 
     public void setPercentageToPower(int percentageToPower) {
-        this.percentageToPower = percentageToPower;
+        this.percentagetopower = percentageToPower;
     }
 }

@@ -14,8 +14,8 @@ public class Technique {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "percentageToPower")
-    private int percentageToPower;
+    @Column(name = "percentagetopower")
+    private int percentagetopower;
 
     public Technique() {
     }
@@ -32,11 +32,11 @@ public class Technique {
         this.name = name;
     }
 
-    public int getPercentageToPower() {
-        return percentageToPower;
+    public int getPercentagetopower() {
+        return percentagetopower;
     }
 
-    public void setPercentageToPower(int percentageToPower) {
-        this.percentageToPower = percentageToPower;
+    public void setPercentagetopower(int percentagetopower) {
+        this.percentagetopower = percentagetopower;
     }
 }

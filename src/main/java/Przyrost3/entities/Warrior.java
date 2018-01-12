@@ -33,7 +33,7 @@ public class Warrior {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "FIGHTING_SCHOOL_ID", referencedColumnName = "id")
-    private FightingSchool fightingSchool;
+    private FightingSchool fightingschool;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "WARRIOR_TECHNIQUE", joinColumns = {@JoinColumn(name = "WARRIOR_ID")}, inverseJoinColumns = {@JoinColumn(name = "TECHNIQUE_ID")})
@@ -86,12 +86,12 @@ public class Warrior {
         this.techniques = techniques;
     }
 
-    public FightingSchool getFightingSchool() {
-        return fightingSchool;
+    public FightingSchool getFightingschool() {
+        return fightingschool;
     }
 
-    public void setFightingSchool(FightingSchool fightingSchool) {
-        this.fightingSchool = fightingSchool;
+    public void setFightingschool(FightingSchool fightingschool) {
+        this.fightingschool = fightingschool;
     }
 
     public Wife getWife() {
