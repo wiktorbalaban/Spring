@@ -24,6 +24,10 @@ public class FightingSchool {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -32,11 +36,11 @@ public class FightingSchool {
         this.name = name;
     }
 
-    public int getPercentageToPower() {
+    public int getPercentagetopower() {
         return percentagetopower;
     }
 
-    public void setPercentageToPower(int percentageToPower) {
-        this.percentagetopower = percentageToPower;
+    public void setPercentagetopower(int percentagetopower) {
+        this.percentagetopower = percentagetopower;
     }
 }

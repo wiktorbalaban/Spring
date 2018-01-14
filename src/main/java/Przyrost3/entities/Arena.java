@@ -18,7 +18,16 @@ public class Arena {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Arena() {
+    }
+
+    public Arena(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public String getName() {
