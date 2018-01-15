@@ -13,4 +13,7 @@ public interface WarriorRepository extends CrudRepository<Warrior, Integer>,
     @Query("select a from Warrior a where a.id = ?1")
     Integer checkIfExist(Integer id);
 
+    @Query("select a from Warrior a where a.name like ?1")
+    Iterable<Warrior> findByName(String name);
+
 }
