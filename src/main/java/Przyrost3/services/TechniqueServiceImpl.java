@@ -1,29 +1,29 @@
 package Przyrost3.services;
 
-import Przyrost3.entities.Arena;
-import Przyrost3.repositories.ArenaRepository;
+import Przyrost3.entities.Technique;
+import Przyrost3.repositories.TechniqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ArenasServiceImpl implements ArenaService {
+public class TechniqueServiceImpl implements TechniqueService {
 
     @Autowired
-    private ArenaRepository repository;
+    private TechniqueRepository repository;
 
     @Override
-    public Iterable<Arena> listAll() {
+    public Iterable<Technique> listAll() {
         return repository.findAll();
     }
 
     @Override
-    public Arena getById(Integer id) {
+    public Technique getById(Integer id) {
         return repository.findOne(id);
     }
 
     @Override
-    public Arena save(Arena obj) {
+    public Technique save(Technique obj) {
         return repository.save(obj);
     }
 
@@ -40,18 +40,13 @@ public class ArenasServiceImpl implements ArenaService {
             return false;
     }
 
-    public Iterable<Arena> listAllPaging(Integer pageNr, Integer howManyOnPage) {
+    public Iterable<Technique> listAllPaging(Integer pageNr, Integer howManyOnPage) {
         return repository.findAll(new PageRequest(pageNr, howManyOnPage));
     }
 
     @Override
-    public Iterable<Arena> getByName(String name) {
+    public Iterable<Technique> getByName(String name) {
         return repository.findByName("%" + name + "%");
-    }
-
-    @Override
-    public long howMany() {
-        return repository.count();
     }
 
 }

@@ -13,4 +13,7 @@ public interface NicknameRepository extends CrudRepository<Nickname, Integer>,
     @Query("select a from Nickname a where a.id = ?1")
     Integer checkIfExist(Integer id);
 
+    @Query("select a from Nickname a where a.name like ?1")
+    Iterable<Nickname> findByName(String name);
+
 }

@@ -13,4 +13,7 @@ public interface FightingSchoolRepository extends CrudRepository<FightingSchool,
     @Query("select a from FightingSchool a where a.id = ?1")
     Integer checkIfExist(Integer id);
 
+    @Query("select a from FightingSchool a where a.name like ?1")
+    Iterable<FightingSchool> findByName(String name);
+
 }

@@ -1,29 +1,29 @@
 package Przyrost3.services;
 
-import Przyrost3.entities.FightingSchool;
-import Przyrost3.repositories.FightingSchoolRepository;
+import Przyrost3.entities.Nickname;
+import Przyrost3.repositories.NicknameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FightingSchoolServiceImpl implements FightingSchoolService {
+public class NicknameServiceImpl implements NicknameService{
 
     @Autowired
-    private FightingSchoolRepository repository;
+    private NicknameRepository repository;
 
     @Override
-    public Iterable<FightingSchool> listAll() {
+    public Iterable<Nickname> listAll() {
         return repository.findAll();
     }
 
     @Override
-    public FightingSchool getById(Integer id) {
+    public Nickname getById(Integer id) {
         return repository.findOne(id);
     }
 
     @Override
-    public FightingSchool save(FightingSchool obj) {
+    public Nickname save(Nickname obj) {
         return repository.save(obj);
     }
 
@@ -40,24 +40,24 @@ public class FightingSchoolServiceImpl implements FightingSchoolService {
             return false;
     }
 
-    public Iterable<FightingSchool> listAllPaging(Integer pageNr, Integer howManyOnPage) {
+    public Iterable<Nickname> listAllPaging(Integer pageNr, Integer howManyOnPage) {
         return repository.findAll(new PageRequest(pageNr, howManyOnPage));
     }
 
     @Override
-    public Iterable<FightingSchool> getByName(String name) {
+    public Iterable<Nickname> getByName(String name) {
         return repository.findByName("%" + name + "%");
     }
 
     @Override
-    public FightingSchool getBest() {
+    public Nickname getTheLongest(){
         double max = 0;
         int maxId = 0;
-        Iterable<FightingSchool> list = repository.findAll();
-        for(FightingSchool obj : list) {
-            int power = obj.getPercentagetopower();
-            if (power > max) {
-                max = power;
+        Iterable<Nickname> list = repository.findAll();
+        for(Nickname obj : list) {
+            int nameLength = obj.getName().length();
+            if (nameLength > max) {
+                max = nameLength;
                 maxId = obj.getId();
             }
         }

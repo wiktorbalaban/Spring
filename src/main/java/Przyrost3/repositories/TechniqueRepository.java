@@ -13,4 +13,7 @@ public interface TechniqueRepository extends CrudRepository<Technique, Integer>,
     @Query("select a from Technique a where a.id = ?1")
     Integer checkIfExist(Integer id);
 
+    @Query("select a from Technique a where a.name like ?1")
+    Iterable<Technique> findByName(String name);
+
 }

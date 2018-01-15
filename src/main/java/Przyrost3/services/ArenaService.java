@@ -4,20 +4,20 @@ import Przyrost3.entities.Arena;
 
 public interface ArenaService {
 
-    Iterable<Arena> listAllArenas();
+    Iterable<Arena> listAll();
 
-    Arena getArenaById(Integer id);
+    Arena getById(Integer id);
 
-    Iterable<Arena> getArenasByName(String name);
+    Iterable<Arena> getByName(String name);
 
-    Arena saveArena(Arena arena);
+    Arena save(Arena arena);
 
-    void deleteArena(Integer id);
+    void delete(Integer id);
 
     Boolean checkIfExist(Integer id);
 
-    Iterable<Arena> listAllArenasPaging(Integer pageNr, Integer howManyOnPage);
+    Iterable<Arena> listAllPaging(Integer pageNr, Integer howManyOnPage);
 
-    long howManyArenas();
+    long howMany();
 
 }

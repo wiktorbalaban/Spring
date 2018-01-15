@@ -13,7 +13,6 @@ public interface ArenaRepository extends CrudRepository<Arena, Integer>, PagingA
     Integer checkIfExist(Integer id);
 
     @Query("select a from Arena a where a.name like ?1")
-    Iterable<Arena> findArenasByName(String name);
-
+    Iterable<Arena> findByName(String name);
 
 }
