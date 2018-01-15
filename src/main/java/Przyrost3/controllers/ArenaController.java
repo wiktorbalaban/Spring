@@ -14,7 +14,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -30,7 +29,7 @@ public class ArenaController {
 
     @RequestMapping(value = "/products/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Arena> list(@PathVariable("page") Integer pageNr,@RequestParam("size") Optional<Integer> howManyOnPage) {
-        return arenaService.listAllProductsPaging(pageNr, howManyOnPage.orElse(2));
+        return arenaService.listAllArenasPaging(pageNr, howManyOnPage.orElse(2));
     }
 
     @RequestMapping(value = "/arenas_by_name", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -64,5 +63,11 @@ public class ArenaController {
         } else
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+
+    @RequestMapping(value = "/arena_how_many", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public long howMany() {
+        return arenaService.howManyArenas();
+    }
+
 
 }

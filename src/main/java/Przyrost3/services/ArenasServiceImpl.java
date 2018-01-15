@@ -34,13 +34,18 @@ public class ArenasServiceImpl implements ArenaService{
             return false;
     }
 
-    public Iterable<Arena> listAllProductsPaging(Integer pageNr, Integer howManyOnPage){
+    public Iterable<Arena> listAllArenasPaging(Integer pageNr, Integer howManyOnPage){
         return arenaRepository.findAll(new PageRequest(pageNr,howManyOnPage));
     }
 
     @Override
     public Iterable<Arena> getArenasByName(String name){
         return arenaRepository.findArenasByName("%"+name+"%");
+    }
+
+    @Override
+    public long howManyArenas(){
+        return arenaRepository.count();
     }
 
 }

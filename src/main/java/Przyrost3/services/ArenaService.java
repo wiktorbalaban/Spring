@@ -16,6 +16,8 @@ public interface ArenaService {
 
     Boolean checkIfExist(Integer id);
 
-    public Iterable<Arena> listAllProductsPaging(Integer pageNr, Integer howManyOnPage);
+    Iterable<Arena> listAllArenasPaging(Integer pageNr, Integer howManyOnPage);
+
+    long howManyArenas();
 
 }
