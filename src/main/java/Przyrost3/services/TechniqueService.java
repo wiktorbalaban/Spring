@@ -18,4 +18,5 @@ public interface TechniqueService {
 
     Iterable<Technique> listAllPaging(Integer pageNr, Integer howManyOnPage);
 
+    Technique getBest();
 }

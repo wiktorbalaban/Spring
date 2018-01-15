@@ -49,4 +49,19 @@ public class TechniqueServiceImpl implements TechniqueService {
         return repository.findByName("%" + name + "%");
     }
 
+    @Override
+    public Technique getBest() {
+        double max = 0;
+        int maxId = 0;
+        Iterable<Technique> list = repository.findAll();
+        for(Technique obj : list) {
+            int power = obj.getPercentagetopower();
+            if (power > max) {
+                max = power;
+                maxId = obj.getId();
+            }
+        }
+        return repository.findOne(maxId);
+    }
+
 }
