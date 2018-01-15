@@ -13,4 +13,7 @@ public interface WifeRepository extends CrudRepository<Wife, Integer>,
     @Query("select a from Wife a where a.id = ?1")
     Integer checkIfExist(Integer id);
 
+    @Query("select a from Wife a where a.name like ?1")
+    Iterable<Wife> findByName(String name);
+
 }
