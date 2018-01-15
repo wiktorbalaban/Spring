@@ -12,6 +12,8 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -21,12 +23,17 @@ public class ArenaController {
     @Autowired
     private ArenaService arenaService;
 
-    @RequestMapping(value = "/list_all_arenas", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/arenas", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Arena> list(Model model) {
         return arenaService.listAllArenas();
     }
 
-    @RequestMapping(value = "/list_arenas_by_name", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/products/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Arena> list(@PathVariable("page") Integer pageNr,@RequestParam("size") Optional<Integer> howManyOnPage) {
+        return arenaService.listAllProductsPaging(pageNr, howManyOnPage.orElse(2));
+    }
+
+    @RequestMapping(value = "/arenas_by_name", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Arena> getByName(@RequestParam("name") String name) {
         return arenaService.getArenasByName(name);
     }
@@ -45,17 +52,17 @@ public class ArenaController {
     @RequestMapping(value = "/arena/{id}", method = RequestMethod.DELETE)
     public RedirectView delete(@PathVariable Integer id) {
         arenaService.deleteArena(id);
-        return new RedirectView("/api/arena", true);
+        return new RedirectView("/api/arenas", true);
     }
 
     @RequestMapping(value = "/arena", method = RequestMethod.PUT)
     public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Arena arena) {
-        if(!arenaService.checkIfExist(arena.getId()))
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        else {
+        Arena arenaFromData=arenaService.getArenaById(arena.getId());
+        if(Objects.nonNull(arenaFromData)) {
             arenaService.saveArena(arena);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        }
+        } else
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 }
