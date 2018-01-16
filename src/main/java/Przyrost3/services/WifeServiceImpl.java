@@ -34,10 +34,7 @@ public class WifeServiceImpl implements WifeService {
 
     @Override
     public Boolean checkIfExist(Integer id) {
-        if (repository.checkIfExist(id) > 0)
-            return true;
-        else
-            return false;
+        return repository.checkIfExist(id) > 0;
     }
 
     public Iterable<Wife> listAllPaging(Integer pageNr, Integer howManyOnPage) {

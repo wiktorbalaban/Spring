@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -24,7 +23,7 @@ public class WarriorController {
     private WarriorService service;
 
     @RequestMapping(value = "/warriors", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Warrior> list(Model model) {
+    public Iterable<Warrior> list() {
         return service.listAll();
     }
 
@@ -78,6 +77,11 @@ public class WarriorController {
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @RequestMapping(value = "/warrior/getMostKnownTechnique", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Technique getMostKnownTechnique() {
+        return service.getTheMostKnown();
     }
 
 }

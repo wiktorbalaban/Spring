@@ -23,7 +23,7 @@ public class WifeController {
     private WifeService service;
 
     @RequestMapping(value = "/wives", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Wife> list(Model model) {
+    public Iterable<Wife> list() {
         return service.listAll();
     }
 

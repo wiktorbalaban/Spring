@@ -1,5 +1,6 @@
 package Przyrost3.services;
 
+import Przyrost3.entities.Technique;
 import Przyrost3.entities.Warrior;
 
 public interface WarriorService {
@@ -17,5 +18,7 @@ public interface WarriorService {
     Boolean checkIfExist(Integer id);
 
     Iterable<Warrior> listAllPaging(Integer pageNr, Integer howManyOnPage);
+
+    Technique getTheMostKnown();
 
 }

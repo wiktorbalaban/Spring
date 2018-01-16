@@ -34,10 +34,7 @@ public class NicknameServiceImpl implements NicknameService{
 
     @Override
     public Boolean checkIfExist(Integer id) {
-        if (repository.checkIfExist(id) > 0)
-            return true;
-        else
-            return false;
+        return repository.checkIfExist(id) > 0;
     }
 
     public Iterable<Nickname> listAllPaging(Integer pageNr, Integer howManyOnPage) {

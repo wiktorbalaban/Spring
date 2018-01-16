@@ -34,10 +34,7 @@ public class FightingSchoolServiceImpl implements FightingSchoolService {
 
     @Override
     public Boolean checkIfExist(Integer id) {
-        if (repository.checkIfExist(id) > 0)
-            return true;
-        else
-            return false;
+        return repository.checkIfExist(id) > 0;
     }
 
     public Iterable<FightingSchool> listAllPaging(Integer pageNr, Integer howManyOnPage) {
@@ -54,7 +51,7 @@ public class FightingSchoolServiceImpl implements FightingSchoolService {
         double max = 0;
         int maxId = 0;
         Iterable<FightingSchool> list = repository.findAll();
-        for(FightingSchool obj : list) {
+        for (FightingSchool obj : list) {
             int power = obj.getPercentagetopower();
             if (power > max) {
                 max = power;

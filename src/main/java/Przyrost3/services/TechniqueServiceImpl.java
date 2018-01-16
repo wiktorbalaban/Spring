@@ -34,10 +34,7 @@ public class TechniqueServiceImpl implements TechniqueService {
 
     @Override
     public Boolean checkIfExist(Integer id) {
-        if (repository.checkIfExist(id) > 0)
-            return true;
-        else
-            return false;
+        return repository.checkIfExist(id) > 0;
     }
 
     public Iterable<Technique> listAllPaging(Integer pageNr, Integer howManyOnPage) {

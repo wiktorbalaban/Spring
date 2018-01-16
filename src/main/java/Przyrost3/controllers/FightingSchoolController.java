@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -23,7 +22,7 @@ public class FightingSchoolController {
     private FightingSchoolService service;
 
     @RequestMapping(value = "/fightingSchools", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<FightingSchool> list(Model model) {
+    public Iterable<FightingSchool> list() {
         return service.listAll();
     }
 
