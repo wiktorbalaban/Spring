@@ -1,7 +1,13 @@
 package Przyrost3.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+
 import javax.persistence.*;
+import java.beans.PropertyEditorSupport;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +24,8 @@ public class Tournament {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "date", columnDefinition = "DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date")
     private LocalDate date;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -71,4 +78,5 @@ public class Tournament {
     public void setParticipants(List<Warrior> participants) {
         this.participants = participants;
     }
+
 }

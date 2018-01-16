@@ -106,9 +106,25 @@ public class Warrior {
         this.wife = wife;
     }
 
-    public boolean sameAs(Warrior w){
-        return id==w.id&&name.equals(w.name)&&surname.equals(w.surname)&&nickname.getId()==w.nickname.getId()&&
-                nickname.getName().equals(w.nickname.getName())&&techniques.size()==w.techniques.size();
+    public boolean sameAs(Warrior w) {
+        return id == w.id && name.equals(w.name) && surname.equals(w.surname) && nickname.getId() == w.nickname.getId() &&
+                nickname.getName().equals(w.nickname.getName()) && techniques.size() == w.techniques.size();
+    }
+
+    public int getFullPower() {
+        double result = power;
+        if (wife != null) result += result * wife.getPercentagetopower() / 100;
+        if (fightingschool != null) result += result * fightingschool.getPercentagetopower() / 100;
+        int max = 0;
+        for (Technique obj : techniques) {
+            int power = obj.getPercentagetopower();
+            if (power > max) {
+                max = power;
+            }
+        }
+        result += result * max / 100;
+
+        return (int) result;
     }
 
 }

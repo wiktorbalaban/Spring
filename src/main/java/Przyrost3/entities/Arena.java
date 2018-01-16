@@ -9,25 +9,20 @@ public class Arena {
 
     @Id @GeneratedValue
     @Column(name = "id")
-    private Integer id;
+    private int id;
 
     @Column(name = "name")
     private String name;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public Arena() {
-    }
-
-    public Arena(Arena arena) {
-        this.id=arena.getId();
-        this.name = arena.getName();
     }
 
     public String getName() {

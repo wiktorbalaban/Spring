@@ -7,7 +7,8 @@ import javax.persistence.*;
         @UniqueConstraint(columnNames = {"id"})})
 public class Technique {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
 

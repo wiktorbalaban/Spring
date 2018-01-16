@@ -13,4 +13,7 @@ public interface TournamentRepository extends CrudRepository<Tournament, Integer
     @Query("select a from Tournament a where a.id = ?1")
     Integer checkIfExist(Integer id);
 
+    @Query("select a from Tournament a where a.name like ?1")
+    Iterable<Tournament> findByName(String name);
+
 }

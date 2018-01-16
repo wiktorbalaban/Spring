@@ -48,7 +48,7 @@ public class FightingSchoolServiceImpl implements FightingSchoolService {
 
     @Override
     public FightingSchool getBest() {
-        double max = 0;
+        int max = 0;
         int maxId = 0;
         Iterable<FightingSchool> list = repository.findAll();
         for (FightingSchool obj : list) {
