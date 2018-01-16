@@ -1,5 +1,6 @@
 package Przyrost3.controllers;
 
+import Przyrost3.entities.Technique;
 import Przyrost3.entities.Warrior;
 import Przyrost3.services.WarriorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,9 +62,18 @@ public class WarriorController {
     @RequestMapping(value = "/warrior", method = RequestMethod.PUT)
     public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Warrior obj) {
         Warrior arenaFromData = service.getById(obj.getId());
-        if (Objects.nonNull(arenaFromData)
-                && ((Objects.isNull(obj.getNickname()) || obj.getNickname().getId() != 0)
-                && (Objects.isNull(obj.getWife()) || obj.getWife().getId() != 0))) {
+        boolean isTechniquesCorrect = true;
+        for (Technique t : obj.getTechniques()) {
+            if (t.getId() == 0) {
+                isTechniquesCorrect = false;
+                break;
+            }
+        }
+        if (Objects.nonNull(arenaFromData) && (
+                (Objects.isNull(obj.getNickname()) || obj.getNickname().getId() != 0)
+                        && (Objects.isNull(obj.getFightingschool()) || obj.getFightingschool().getId() != 0)
+                        && (Objects.isNull(obj.getWife()) || obj.getWife().getId() != 0)
+                        && isTechniquesCorrect)) {
             service.save(obj);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else
