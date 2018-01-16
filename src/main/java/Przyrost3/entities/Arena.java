@@ -25,11 +25,6 @@ public class Arena {
     public Arena() {
     }
 
-    public Arena(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     public Arena(Arena arena) {
         this.id=arena.getId();
         this.name = arena.getName();

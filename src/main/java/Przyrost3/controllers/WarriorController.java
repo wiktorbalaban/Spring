@@ -39,8 +39,12 @@ public class WarriorController {
 
     @RequestMapping(value = "/warrior", method = RequestMethod.POST)
     public ResponseEntity<Warrior> create(@RequestBody @Valid @NotNull Warrior obj) {
-        service.save(obj);
-        return ResponseEntity.ok().body(obj);
+        if (obj.getFightingschool() == null && obj.getTechniques().isEmpty()) {
+            service.save(obj);
+            return ResponseEntity.ok().body(obj);
+        } else {
+            return ResponseEntity.badRequest().body(obj);
+        }
     }
 
     @RequestMapping(value = "/warrior", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -57,7 +61,9 @@ public class WarriorController {
     @RequestMapping(value = "/warrior", method = RequestMethod.PUT)
     public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Warrior obj) {
         Warrior arenaFromData = service.getById(obj.getId());
-        if (Objects.nonNull(arenaFromData)) {
+        if (Objects.nonNull(arenaFromData)
+                && ((Objects.isNull(obj.getNickname()) || obj.getNickname().getId() != 0)
+                && (Objects.isNull(obj.getWife()) || obj.getWife().getId() != 0))) {
             service.save(obj);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else
