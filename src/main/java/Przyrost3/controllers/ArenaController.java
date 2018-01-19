@@ -47,6 +47,9 @@ public class ArenaController {
         return service.getById(publicId);
     }
 
+    @RequestMapping(value = "/arena/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Arena getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
+
     @RequestMapping(value = "/arena/{id}", method = RequestMethod.DELETE)
     public RedirectView delete(@PathVariable Integer id) {
         service.delete(id);
