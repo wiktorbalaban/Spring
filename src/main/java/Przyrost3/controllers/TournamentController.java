@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TournamentController {
 
     @Autowired
@@ -51,6 +52,9 @@ public class TournamentController {
     public Tournament getByParamPublicId(@RequestParam("id") Integer publicId) {
         return service.getById(publicId);
     }
+
+    @RequestMapping(value = "/tournament/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Tournament getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
 
     @RequestMapping(value = "/tournament/{id}", method = RequestMethod.DELETE)
     public RedirectView delete(@PathVariable Integer id) {

@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TechniqueController {
 
     @Autowired
@@ -46,6 +47,9 @@ public class TechniqueController {
     public Technique getByParamPublicId(@RequestParam("id") Integer publicId) {
         return service.getById(publicId);
     }
+
+    @RequestMapping(value = "/technique/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Technique getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
 
     @RequestMapping(value = "/technique/{id}", method = RequestMethod.DELETE)
     public RedirectView delete(@PathVariable Integer id) {
