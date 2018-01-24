@@ -25,7 +25,7 @@ public class Tournament {
     private String name;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "date")
+    @Column(name = "date", columnDefinition = "DATE")
     private LocalDate date;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
