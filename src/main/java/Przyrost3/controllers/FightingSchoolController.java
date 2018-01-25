@@ -51,10 +51,11 @@ public class FightingSchoolController {
     @RequestMapping(value = "/fightingSchool/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public FightingSchool getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
 
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/fightingSchool/{id}", method = RequestMethod.DELETE)
-    public RedirectView delete(@PathVariable Integer id) {
+    public ResponseEntity<FightingSchool> delete(@PathVariable Integer id) {
         service.delete(id);
-        return new RedirectView("/api/fightingSchools", true);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/fightingSchool", method = RequestMethod.PUT)

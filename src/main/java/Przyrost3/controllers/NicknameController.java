@@ -51,10 +51,11 @@ public class NicknameController {
     @RequestMapping(value = "/nickname/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Nickname getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
 
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/nickname/{id}", method = RequestMethod.DELETE)
-    public RedirectView delete(@PathVariable Integer id) {
+    public ResponseEntity<Nickname> delete(@PathVariable Integer id) {
         service.delete(id);
-        return new RedirectView("/api/nicknames", true);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/nickname", method = RequestMethod.PUT)

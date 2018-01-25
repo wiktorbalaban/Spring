@@ -56,10 +56,11 @@ public class TournamentController {
     @RequestMapping(value = "/tournament/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Tournament getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
 
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/tournament/{id}", method = RequestMethod.DELETE)
-    public RedirectView delete(@PathVariable Integer id) {
+    public ResponseEntity<Tournament> delete(@PathVariable Integer id) {
         service.delete(id);
-        return new RedirectView("/api/tournaments", true);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/tournament", method = RequestMethod.PUT)

@@ -52,10 +52,11 @@ public class WifeController {
     @RequestMapping(value = "/wife/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Wife getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
 
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/wife/{id}", method = RequestMethod.DELETE)
-    public RedirectView delete(@PathVariable Integer id) {
+    public ResponseEntity<Wife> delete(@PathVariable Integer id) {
         service.delete(id);
-        return new RedirectView("/api/wives", true);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/wife", method = RequestMethod.PUT)

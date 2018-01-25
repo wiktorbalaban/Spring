@@ -56,10 +56,11 @@ public class WarriorController {
     @RequestMapping(value = "/warrior/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Warrior getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
 
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/warrior/{id}", method = RequestMethod.DELETE)
-    public RedirectView delete(@PathVariable Integer id) {
+    public ResponseEntity<Warrior> delete(@PathVariable Integer id) {
         service.delete(id);
-        return new RedirectView("/api/warriors", true);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/warrior", method = RequestMethod.PUT)

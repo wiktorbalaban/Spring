@@ -51,10 +51,11 @@ public class ArenaController {
     @RequestMapping(value = "/arena/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Arena getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
 
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/arena/{id}", method = RequestMethod.DELETE)
-    public RedirectView delete(@PathVariable Integer id) {
+    public ResponseEntity<Arena> delete(@PathVariable Integer id) {
         service.delete(id);
-        return new RedirectView("/api/arenas", true);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/arena", method = RequestMethod.PUT)

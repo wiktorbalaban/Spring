@@ -51,10 +51,11 @@ public class TechniqueController {
     @RequestMapping(value = "/technique/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Technique getByPublicId(@PathVariable("id") Integer publicId){ return service.getById(publicId); }
 
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/technique/{id}", method = RequestMethod.DELETE)
-    public RedirectView delete(@PathVariable Integer id) {
+    public ResponseEntity<Technique> delete(@PathVariable Integer id) {
         service.delete(id);
-        return new RedirectView("/api/techniques", true);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/technique", method = RequestMethod.PUT)
